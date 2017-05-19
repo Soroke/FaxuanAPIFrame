@@ -9,15 +9,16 @@ import java.util.Properties;
  */
 public class GetProperties {
 
-    Properties properties = new Properties();
-    public GetProperties() {
+    java.util.Properties properties = new java.util.Properties();
 
+    public GetProperties(String pripertiesName) {
         try {
-            properties.load(this.getClass().getClassLoader().getResourceAsStream("Route.properties"));
+            properties.load(this.getClass().getClassLoader().getResourceAsStream(pripertiesName + ".properties"));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     public String getPropertie(String key) {
         return properties.getProperty(key);

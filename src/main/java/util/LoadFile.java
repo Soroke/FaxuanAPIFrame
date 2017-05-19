@@ -16,7 +16,7 @@ public class LoadFile {
     List<Request> requests = new ArrayList<Request>();
     public LoadFile() {
 
-        readFileByLines(new GetProperties().getPropertie("route"));
+        readFileByLines(new GetProperties("Route").getPropertie("route"));
 
     }
 

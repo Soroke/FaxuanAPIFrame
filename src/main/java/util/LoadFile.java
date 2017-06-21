@@ -1,5 +1,8 @@
 package util;
 
+import database.Connect;
+import org.apache.log4j.Logger;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -14,14 +17,17 @@ import java.util.List;
 public class LoadFile {
 
     List<Request> requests = new ArrayList<Request>();
+    private Logger log = Logger.getLogger(this.getClass());
+
+
     public LoadFile() {
 
-        readFileByLines(new GetProperties("Route").getPropertie("route"));
-
+        readFileByLines(new GetProperties("fiddler").getPropertie("route"));
+        save();
     }
 
     public void readFileByLines(String fileName) {
-
+        log.info("开始读取文件");
         String responseBody = "";
         File file = new File(fileName);
         BufferedReader reader = null;
@@ -63,6 +69,7 @@ public class LoadFile {
                 line++;
             }
             reader.close();
+            log.info("文件读取完毕，开始插入数据库");
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
@@ -77,5 +84,15 @@ public class LoadFile {
 
     public List<Request> getRequests() {
         return requests;
+    }
+
+    Connect connect = new Connect();
+    public void save() {
+        for(Request request:requests) {
+            //System.err.println("INSERT INTO api VALUES(" + request.getRequestType() + "," + request.getRequestUrl().replace("\"","'") + "," + request.getResponseBody().replace("\"","'") + ")");
+            connect.insertSQL("INSERT INTO request_manager (request_type,request_url,response_body) VALUES (\"" + request.getRequestType() + "\",\"" + request.getRequestUrl().replace("\"","'") + "\",\"" + request.getResponseBody().replace("\"","'") + "\")");
+        }
+        log.info("数据库插入完毕");
+        connect.disConnect();
     }
 }

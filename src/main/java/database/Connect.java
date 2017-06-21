@@ -1,5 +1,6 @@
 package database;
 
+import org.apache.log4j.Logger;
 import util.GetProperties;
 
 import java.sql.*;
@@ -9,6 +10,7 @@ import java.sql.*;
  */
 public class Connect {
 
+    private Logger log = Logger.getLogger(this.getClass());
     /**
      * 数据库连接信息
      */
@@ -34,7 +36,7 @@ public class Connect {
      * 初始化链接数据
      */
     private void initDBManager() {
-        GetProperties getProperties = new GetProperties("db");
+        GetProperties getProperties = new GetProperties("fiddler");
         this.driver = getProperties.getPropertie("driver");
         this.url = getProperties.getPropertie("url");
         this.name = getProperties.getPropertie("username");
@@ -48,6 +50,7 @@ public class Connect {
         try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url,name,passwd);
+            log.info("数据库链接成功");
         } catch (ClassNotFoundException e) {
             System.err.println("装载 JDBC/ODBC 驱动程序失败。");
             e.printStackTrace();
@@ -85,7 +88,7 @@ public class Connect {
                 }catch (SQLException e) {
                     e.printStackTrace();
                 }finally {
-                    System.err.println( "数据库链接已关闭");
+                    log.info( "数据库链接已关闭");
                 }
             }
 

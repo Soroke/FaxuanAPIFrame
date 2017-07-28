@@ -152,6 +152,21 @@ public class Http {
     }
 
     /**
+     * 设置单个参数
+     * @param key
+     * @param value
+     * @return
+     *          this
+     */
+    public Http setParam(String key,String value) {
+        Map<Object,Object> par = new HashMap<Object,Object>();
+        par.put(key,value);
+        this.params = par;
+        req.setParams(params);
+        return this;
+    }
+
+    /**
      * 设置header的方法
      * @param httpRequestBase
      *      http的对象例如 HttpGet、HttpPost
@@ -159,7 +174,7 @@ public class Http {
     public void addHeaderToHttpRequest(HttpRequestBase httpRequestBase) {
         if(!headers.isEmpty()) {
             for(Map.Entry<Object, Object> entry : headers.entrySet()){
-                httpRequestBase.addHeader(entry.getKey().toString(), entry.getKey().toString());
+                httpRequestBase.addHeader(entry.getKey().toString(), entry.getValue().toString());
             }
         }
     }
@@ -235,7 +250,7 @@ public class Http {
             e.printStackTrace();
         }
         req.setStatusCode(response.getStatusLine().getStatusCode());
-        log.info(req);
+        log.info("接口返回信息：" + req);
         return req;
     }
 
@@ -302,7 +317,7 @@ public class Http {
             e.printStackTrace();
         }
         req.setStatusCode(response.getStatusLine().getStatusCode());
-        log.info(req);
+        log.info("接口返回信息：" + req);
 
         return req;
     }

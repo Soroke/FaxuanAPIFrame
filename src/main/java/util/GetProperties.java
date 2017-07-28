@@ -1,5 +1,7 @@
 package util;
 
+import org.testng.annotations.Test;
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -23,5 +25,7 @@ public class GetProperties {
     public String getPropertie(String key) {
         return properties.getProperty(key);
     }
+
+
 }
 

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Faxuan" verbose="1">
+    <parameter name="mysql_user1" value="root"/>
+    <test name="对比积分报表数据测试">
+        <classes>
+            <class name="nte.faxuan.test.Point"/>
+        </classes>
+    </test>
+</suite>

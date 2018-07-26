@@ -1,9 +1,11 @@
 package net.faxuan.util;
 
-import net.faxuan.data.SourceType;
+import net.faxuan.data.ParamInfo;
 
 import java.io.IOException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
 
 /**
  * Created by song on 2017/7/25.
@@ -12,10 +14,19 @@ public class DataSource {
     private Properties properties = new Properties();
     private SourceType sourceType;
     private Map<Object,Object> dbinfo = new HashMap<Object,Object>();
+    private ParamInfo paramInfo = new ParamInfo();
+    private String environment = paramInfo.getEnviroment();
+
 
     public DataSource(SourceType sourceType) {
         try {
-            properties.load(this.getClass().getClassLoader().getResourceAsStream("database.properties"));
+            if (environment.equals("测试环境")) {
+                properties.load(this.getClass().getClassLoader().getResourceAsStream("qaDB.properties"));
+            } else if(environment.equals("预上线环境")) {
+                properties.load(this.getClass().getClassLoader().getResourceAsStream("rcDB.properties"));
+            } else if (environment.equals("线上环境")) {
+                properties.load(this.getClass().getClassLoader().getResourceAsStream("onlineDB.properties"));
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -51,5 +62,8 @@ public class DataSource {
 
     private String getPropertie(String key) {
         return properties.getProperty(key);
+    }
+    public enum SourceType {
+        SOURSE1,SOURSE2,SOURSE3,SOURSE4;
     }
 }

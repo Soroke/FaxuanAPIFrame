@@ -6,8 +6,10 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.util.Iterator;
 import java.util.Map;
+
 /**
- * Created by song on 17/7/2.
+ * Created by song on 17/8/2.
+ * 获取json中数据
  */
 public class JsonHelper {
 

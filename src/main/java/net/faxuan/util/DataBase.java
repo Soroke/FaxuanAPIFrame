@@ -1,6 +1,5 @@
 package net.faxuan.util;
 
-import net.faxuan.data.SourceType;
 import org.apache.log4j.Logger;
 
 import java.sql.*;
@@ -22,7 +21,7 @@ public class DataBase {
      * 构造方法初始化数据库链接属性
      * @param sourceType 连接数据库
      */
-    public DataBase(SourceType sourceType) {
+    public DataBase(DataSource.SourceType sourceType) {
         Map<Object,Object> dbinfor = new DataSource(sourceType).getDBInfo();
         this.url = dbinfor.get("url").toString();
         this.userName = dbinfor.get("user").toString();
@@ -43,7 +42,7 @@ public class DataBase {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection( url, userName, passWord);
-            log.info("数据库:" + url + "--连接成功");
+//log.info("数据库:" + url + "--连接成功");
         }
         catch ( ClassNotFoundException cnfex ) {
             log.error("装载 JDBC/ODBC 驱动程序失败");
@@ -51,7 +50,7 @@ public class DataBase {
         }
         catch ( SQLException sqlex ) {
             log.error("无法连接数据库");
-            System.err.println( "无法连接数据库" );
+            System.err.println( "无法连接数据库url" + url );
             sqlex.printStackTrace();
         }
     }
@@ -63,7 +62,7 @@ public class DataBase {
         try {
             if (conn != null)
                 conn.close();
-            log.info("数据库:" + url + "--连接已关闭");
+//log.info("数据库:" + url + "--连接已关闭");
         } catch (Exception e) {
             log.error("数据库:" + url + "--关闭数据库链接时出错");
             e.printStackTrace();
@@ -76,11 +75,11 @@ public class DataBase {
      * @return
      */
     public ResultSet selectSQL(String sql) {
+log.info("执行sql查询\t" + sql);
         ResultSet rs = null;
         try {
             statement = conn.prepareStatement(sql);
             rs = statement.executeQuery(sql);
-            log.info("执行sql查询\t" + sql);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,10 +87,11 @@ public class DataBase {
     }
     // 执行数据库插入语句
     public boolean insertSQL(String sql) {
+log.info("执行sql插入\t" + sql);
         try {
             statement = conn.prepareStatement(sql);
             statement.executeUpdate();
-            log.info("执行sql插入\t" + sql);
+
             return true;
         } catch (SQLException e) {
             log.error("插入数据库时出错");
@@ -107,7 +107,7 @@ public class DataBase {
         try {
             statement = conn.prepareStatement(sql);
             statement.executeUpdate();
-            log.info("执行sql删除\t" + sql);
+log.info("执行sql删除\t" + sql);
             return true;
         } catch (SQLException e) {
             System.err.println("插入数据库时出错：");
@@ -123,7 +123,7 @@ public class DataBase {
         try {
             statement = conn.prepareStatement(sql);
             statement.executeUpdate();
-            log.info("执行sql更新\t" + sql);
+log.info("执行sql更新\t" + sql);
             return true;
         } catch (SQLException e1) {
             log.error("插入数据库时出错");

@@ -1,9 +1,6 @@
 package net.faxuan.test;
 
-import com.beust.jcommander.Parameter;
 import net.faxuan.data.ExamDomain;
-import net.faxuan.data.ExamUser;
-import net.faxuan.data.ParamInfo;
 import net.faxuan.exception.Check;
 import net.faxuan.exception.CheckException;
 import net.faxuan.init.TestCase;
@@ -13,7 +10,6 @@ import net.faxuan.util.ConfirmExecutionData;
 import net.faxuan.util.DataBase;
 import net.faxuan.util.DataSource;
 import net.faxuan.util.GetData;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -59,8 +55,8 @@ public class DomainExamTest extends TestCase{
         /**
          * 获取xf和test的report库中的数据
          */
-        DataBase xfReport = new DataBase(DataSource.SourceType.SOURSE4);
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase xfReport = new DataBase(DataSource.SourceType.XFREPORT);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         List<DomainExam> testDomainExams = GetData.getDomainExamInfo(examIDs,testReport,"domain_exam");
         List<DomainExam> testDomainExams2016 = GetData.getDomainExamInfo(examIDs,testReport,"domain_exam" + (yearInt-1));
         List<DomainExam> xfDomainExams = GetData.getDomainExamInfo(examIDs,xfReport,"report_exam_domain");

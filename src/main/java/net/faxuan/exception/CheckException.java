@@ -1,11 +1,14 @@
 package net.faxuan.exception;
 
+import org.apache.log4j.Logger;
+
 /**
  * Created by song on 2017/8/8.
  */
 public class CheckException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
+    private Logger log = Logger.getLogger(this.getClass());
 
     /**
      * 错误编码
@@ -26,6 +29,7 @@ public class CheckException extends RuntimeException {
     public CheckException(String message)
     {
         super(message);
+        log.error(message);
     }
 
     /**

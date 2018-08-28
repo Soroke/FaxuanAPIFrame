@@ -25,7 +25,7 @@ public class ConfirmExecutionData {
         /**
          * 数据库链接
          */
-        DataBase xfExam = new DataBase(DataSource.SourceType.SOURSE3);
+        DataBase xfExam = new DataBase(DataSource.SourceType.XFEXAM);
 
         List<Exam> exams = new ArrayList<Exam>();
 
@@ -85,7 +85,7 @@ public class ConfirmExecutionData {
         /**
          * 数据库链接
          */
-        DataBase xfExam = new DataBase(DataSource.SourceType.SOURSE3);
+        DataBase xfExam = new DataBase(DataSource.SourceType.XFEXAM);
         /**
          * 主考考试信息储存
          */
@@ -143,7 +143,7 @@ public class ConfirmExecutionData {
      */
     public static String getDomainCode() {
         String domainCodes = "";
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         ResultSet resultSet = testReport.selectSQL("SELECT * FROM `domain_exam` GROUP BY DOMAIN_CODE;");
         try {
             resultSet.last();

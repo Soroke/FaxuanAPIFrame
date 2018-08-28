@@ -1,11 +1,9 @@
 package net.faxuan.test;
 
-import net.faxuan.data.ExamDomain;
 import net.faxuan.data.PointDomain;
 import net.faxuan.exception.Check;
 import net.faxuan.exception.CheckException;
 import net.faxuan.init.TestCase;
-import net.faxuan.tableProject.DomainExam;
 import net.faxuan.tableProject.DomainPoint;
 import net.faxuan.util.ConfirmExecutionData;
 import net.faxuan.util.DataBase;
@@ -39,8 +37,8 @@ public class DomainPointTest extends TestCase{
         /**
          * 获取xf和test的report库中的数据
          */
-        DataBase xfReport = new DataBase(DataSource.SourceType.SOURSE4);
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase xfReport = new DataBase(DataSource.SourceType.XFREPORT);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         List<DomainPoint> testDomainPoints = GetData.getDomainPointInfo(domainCode,testReport,"domain_point");
         List<DomainPoint> xfDomainPoints = GetData.getDomainPointInfo(domainCode,xfReport,"report_point_domain");
         xfReport.deconnSQL();

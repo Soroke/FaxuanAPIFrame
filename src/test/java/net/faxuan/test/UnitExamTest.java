@@ -5,7 +5,6 @@ import net.faxuan.exception.Check;
 import net.faxuan.exception.CheckException;
 import net.faxuan.init.TestCase;
 import net.faxuan.tableProject.UnitExam;
-import net.faxuan.tableProject.UserExam;
 import net.faxuan.util.DataBase;
 import net.faxuan.util.DataSource;
 import net.faxuan.util.GetData;
@@ -35,8 +34,8 @@ public class UnitExamTest extends TestCase {
 
     @Test(description = "对比学法库和测试库中考试汇总统计数据的一致性",priority = 2)
     public void contrastData() {
-        DataBase xfReport = new DataBase(DataSource.SourceType.SOURSE4);
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase xfReport = new DataBase(DataSource.SourceType.XFREPORT);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         List<UnitExam> testUnitExams = GetData.getUnitExamInfo(testReport,"unit_exam");
         List<UnitExam> xfUnitExams = GetData.getUnitExamInfo(xfReport,"report_exam_domain_unit");
         xfReport.deconnSQL();

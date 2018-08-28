@@ -1,6 +1,5 @@
 package net.faxuan.data;
 
-import net.faxuan.exception.CheckException;
 import net.faxuan.tableProject.UserPoint;
 import net.faxuan.util.ConfirmExecutionData;
 import net.faxuan.util.DataBase;
@@ -58,7 +57,7 @@ public class PointUser {
         /**
          * 连接学法base库
          */
-        DataBase xfBase = new DataBase(DataSource.SourceType.SOURSE2);
+        DataBase xfBase = new DataBase(DataSource.SourceType.XFBASE);
 
         /**
          * 获取单位使用积分规则总分
@@ -137,7 +136,7 @@ public class PointUser {
      * 插入用户积分数据到数据库
      */
     private boolean insertDatabase() {
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         for (UserPoint userPoint:userPoints) {
             String insertSQL = "insert into user_point(USER_ACCOUNT,DOMAIN_CODE,LPOINT,IPOINT,SPOINT,EPOINT,APOINT,PPOINT,TPOINT,EXT_1) values('" +
                     userPoint.getUSER_ACCOUNT() + "'," +

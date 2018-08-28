@@ -33,7 +33,7 @@ public class CreditUser {
      * 获取用户的学分信息
      */
     private void getCresitUserInfo() {
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         for (Exam exam:exams) {
             double examProportion = Double.valueOf(exam.getPROPORTION())/100;
             double pointProportion = 1 - examProportion;
@@ -84,7 +84,7 @@ public class CreditUser {
 
     private void insertDataBase(List<UserCredit> userCredits) {
         if (userCredits == null) return;
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         for (UserCredit userCredit:userCredits) {
             String insertSQL="INSERT INTO user_credit(USER_ACCOUNT,USER_NAME,DOMAIN_CODE,RANK_ID,EXAM_ID,EXAM_YEAR,EXAM_SCORE,EXAM_STATUS,POINT_SCORE,CREDIT_SCORE) VALUES(" +
                     userCredit.getUSER_ACCOUNT() + ",'" +

@@ -1,11 +1,9 @@
 package net.faxuan.test;
 
-import net.faxuan.data.ExamUser;
 import net.faxuan.data.PointUser;
 import net.faxuan.exception.Check;
 import net.faxuan.exception.CheckException;
 import net.faxuan.init.TestCase;
-import net.faxuan.tableProject.UserExam;
 import net.faxuan.tableProject.UserPoint;
 import net.faxuan.util.ConfirmExecutionData;
 import net.faxuan.util.DataBase;
@@ -14,7 +12,6 @@ import net.faxuan.util.GetData;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,8 +38,8 @@ public class UserPointTest extends TestCase {
         /**
          * 学法库和测试库的链接对象
          */
-        DataBase xfReport = new DataBase(DataSource.SourceType.SOURSE4);
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase xfReport = new DataBase(DataSource.SourceType.XFREPORT);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
 
         List<UserPoint> testUserPoints = GetData.getUserPointInfo(domainCodes,testReport,"user_point");
         List<UserPoint> xfUserPoints = GetData.getUserPointInfo(domainCodes,xfReport,"report_point_user");

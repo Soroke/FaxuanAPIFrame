@@ -1,14 +1,11 @@
 package net.faxuan.test;
 
 import net.faxuan.data.CreditDomain;
-import net.faxuan.data.ExamDomain;
 import net.faxuan.exception.Check;
 import net.faxuan.exception.CheckException;
 import net.faxuan.init.TestCase;
 import net.faxuan.tableProject.DomainCredit;
 import net.faxuan.tableProject.Exam;
-import net.faxuan.tableProject.UserCredit;
-import net.faxuan.tableProject.UserPoint;
 import net.faxuan.util.ConfirmExecutionData;
 import net.faxuan.util.DataBase;
 import net.faxuan.util.DataSource;
@@ -48,8 +45,8 @@ public class DomainCreditTest extends TestCase{
         /**
          * 学法库和测试库的链接对象
          */
-        DataBase xfReport = new DataBase(DataSource.SourceType.SOURSE4);
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase xfReport = new DataBase(DataSource.SourceType.XFREPORT);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         List<DomainCredit> testDomainCredit = GetData.getDomainCreditInfo(domainCode,examIds,testReport,"domain_credit");
         List<DomainCredit> xfDomainCredit = GetData.getDomainCreditInfo(domainCode,examIds,xfReport,"credit_domain_report");
         xfReport.deconnSQL();

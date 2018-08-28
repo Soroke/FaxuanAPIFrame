@@ -36,22 +36,22 @@ public class DataSource {
     public Map<Object,Object> getDBInfo() {
         dbinfo.put("driver",getPropertie("driver"));
         switch (sourceType) {
-            case SOURSE1:
+            case TREPORT:
                 dbinfo.put("url",getPropertie("db1_url"));
                 dbinfo.put("user",getPropertie("db1_username"));
                 dbinfo.put("password",getPropertie("db1_password"));
                 break;
-            case SOURSE2:
+            case XFBASE:
                 dbinfo.put("url",getPropertie("db2_url"));
                 dbinfo.put("user",getPropertie("db2_username"));
                 dbinfo.put("password",getPropertie("db2_password"));
                 break;
-            case SOURSE3:
+            case XFEXAM:
                 dbinfo.put("url",getPropertie("db3_url"));
                 dbinfo.put("user",getPropertie("db3_username"));
                 dbinfo.put("password",getPropertie("db3_password"));
                 break;
-            case SOURSE4:
+            case XFREPORT:
                 dbinfo.put("url",getPropertie("db4_url"));
                 dbinfo.put("user",getPropertie("db4_username"));
                 dbinfo.put("password",getPropertie("db4_password"));
@@ -64,6 +64,6 @@ public class DataSource {
         return properties.getProperty(key);
     }
     public enum SourceType {
-        SOURSE1,SOURSE2,SOURSE3,SOURSE4;
+        TREPORT, XFBASE, XFEXAM, XFREPORT;
     }
 }

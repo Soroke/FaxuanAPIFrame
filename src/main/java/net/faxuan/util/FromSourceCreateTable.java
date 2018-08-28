@@ -8,7 +8,7 @@ import java.sql.SQLException;
 /**
  * Created by song on 2018/8/24.
  */
-public class FormSourceCreateTable {
+public class FromSourceCreateTable {
     /**
      * 根据传入学法report库中源表名获取表字段，组装建表SQL并在测试report库汇总创建表
      * @param sourceTableName report库中表名称
@@ -29,6 +29,8 @@ public class FormSourceCreateTable {
             case XFREPORT:
                 sql = "select COLUMN_NAME,COLUMN_TYPE,IS_NULLABLE,COLUMN_COMMENT,COLUMN_KEY from information_schema.columns where TABLE_NAME='" + sourceTableName + "' AND TABLE_SCHEMA='report';";
                 break;
+            default:
+                sql = "select COLUMN_NAME,COLUMN_TYPE,IS_NULLABLE,COLUMN_COMMENT,COLUMN_KEY from information_schema.columns where TABLE_NAME='" + sourceTableName + "' AND TABLE_SCHEMA='qa_report';";
         }
 
         ResultSet rs = sourceDataBase.selectSQL(sql);

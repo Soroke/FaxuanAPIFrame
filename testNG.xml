@@ -1,10 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="Faxuan" verbose="1">
-    <parameter name="mysql_user1" value="root"/>
-    <test name="对比积分报表数据测试">
+<suite name="法宣报表数据测试" verbose="1" preserve-order="true">
+    <test name="测试">
         <classes>
-            <class name="nte.faxuan.test.Point"/>
+            <class name="net.faxuan.fortest.ForTest"/>
         </classes>
     </test>
+    <!--
+        <test name="获取临时表数据">
+            <classes>
+                <class name="net.faxuan.test.BaseDataTest"/>
+            </classes>
+        </test>
+
+        <test name="测试学员考试报表数据">
+            <classes>
+                <class name="net.faxuan.test.UserExamTest"/>
+            </classes>
+        </test>
+
+        <test name="测试单位考试报表数据">
+            <classes>
+                <class name="net.faxuan.test.DomainExamTest"/>
+            </classes>
+        </test>
+
+        <test name="测试考试汇总报表">
+            <classes>
+                <class name="net.faxuan.test.UnitExamTest"/>
+            </classes>
+        </test>
+
+        <test name="测试学员积分报表">
+            <classes>
+                <class name="net.faxuan.test.UserPointTest"/>
+            </classes>
+        </test>
+
+        <test name="测试单位积分报表">
+            <classes>
+                <class name="net.faxuan.test.DomainPointTest"/>
+            </classes>
+        </test>
+
+        <test name="测试用户学分报表">
+            <classes>
+                <class name="net.faxuan.test.UserCreditTest"/>
+            </classes>
+        </test>
+
+        <test name="测试单位学分报表">
+            <classes>
+                <class name="net.faxuan.test.DomainCreditTest"/>
+            </classes>
+        </test> -->
+
+
 </suite>

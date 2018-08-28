@@ -54,7 +54,7 @@ public class CreditDomain {
         /**
          * 测试库连接
          */
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         for (String domain:domainCode) {
             for (Exam exam:exams) {
                 ResultSet resultSet = testReport.selectSQL("SELECT * FROM domain_exam WHERE DOMAIN_CODE=" + domain + " AND EXAM_ID=" + exam.getID() + ";");
@@ -113,7 +113,7 @@ public class CreditDomain {
      */
     private void insertDataBase() {
         //测试库连接
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         for (DomainCredit domainCredit:domainCredits) {
             String insertSQL="INSERT INTO domain_credit (DOMAIN_CODE,EXAM_ID,EXAM_YEAR,PASS_NUM,NO_PASS_NUM,NO_JOIN_NUM,TOTAL_NUM,PASS_RATE,AVG_SCORE,AVG_CREDIT_SCORE) VALUES(" +
                     domainCredit.getDOMAIN_CODE() + "," +

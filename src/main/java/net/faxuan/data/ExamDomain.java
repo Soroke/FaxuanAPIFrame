@@ -2,7 +2,6 @@ package net.faxuan.data;
 
 import net.faxuan.tableProject.DomainExam;
 import net.faxuan.tableProject.Exam;
-import net.faxuan.tableProject.UserExam;
 import net.faxuan.util.ConfirmExecutionData;
 import net.faxuan.util.DataBase;
 import net.faxuan.util.DataSource;
@@ -52,7 +51,7 @@ public class ExamDomain {
      * 构造方法
      */
     public ExamDomain() {
-        this.testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        this.testReport = new DataBase(DataSource.SourceType.TREPORT);
         exams = ConfirmExecutionData.getExams();
         initDomainCode();
         insert();

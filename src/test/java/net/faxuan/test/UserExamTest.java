@@ -11,7 +11,6 @@ import net.faxuan.util.ConfirmExecutionData;
 import net.faxuan.util.DataBase;
 import net.faxuan.util.DataSource;
 import net.faxuan.util.GetData;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -30,7 +29,7 @@ public class UserExamTest extends TestCase {
     private int yearInt = date.get(Calendar.YEAR);
 
 
-    @BeforeClass(description = "连接数据库；获取数据库report_exam_user2016表信息然后创建测试report库中的user_exam表")
+    @BeforeClass(description = "连接数据库；获取数据库去年会员考试表的表信息然后创建测试report库中的user_exam表")
     public void before() {
         List<String> tableNames = new ArrayList<String>();
         tableNames.add("report_exam_user" + (yearInt-1));
@@ -51,8 +50,8 @@ public class UserExamTest extends TestCase {
             examIDs += (exam.getID() + ",");
         }
         examIDs= examIDs.substring(0,examIDs.length()-1);
-        DataBase xfReport = new DataBase(DataSource.SourceType.SOURSE4);
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase xfReport = new DataBase(DataSource.SourceType.XFREPORT);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         List<UserExam> testUserExams = GetData.getUserExamInfo(examIDs, testReport,"user_exam");
         List<UserExam> xfUserExams = GetData.getUserExamInfo(examIDs, xfReport,"report_exam_user");
         List<UserExam> testUserExams2016 = GetData.getUserExamInfo(examIDs, testReport,"user_exam" +(yearInt-1));

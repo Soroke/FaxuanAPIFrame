@@ -81,7 +81,7 @@ public class ExamUnit {
         /**
          * 获取应统计的单位的编码
          */
-        DataBase xfBase = new DataBase(DataSource.SourceType.SOURSE2);
+        DataBase xfBase = new DataBase(DataSource.SourceType.XFBASE);
 
         if (domainCode.length() == 19) {
             UnitExam unitExam = new UnitExam();
@@ -113,7 +113,7 @@ public class ExamUnit {
         /**
          * 学法库连接
          */
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
 
 
         /**
@@ -268,7 +268,7 @@ public class ExamUnit {
         /**
          * 连接学法Base库
          */
-        DataBase xfBase = new DataBase(DataSource.SourceType.SOURSE2);
+        DataBase xfBase = new DataBase(DataSource.SourceType.XFBASE);
 
         String domainCode = exam.getTARGET_DOMAIN_CODE();
         String code = "000";
@@ -308,7 +308,7 @@ public class ExamUnit {
         /**
          * 学法库连接
          */
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
 
         /**
          * 待移除汇总统计单位数据
@@ -458,7 +458,7 @@ public class ExamUnit {
         /**
          * 连接测试库
          */
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
 
         for (UnitExam unitExam:unitExams) {
             String insertSQL = "INSERT INTO unit_exam(DOMAIN_CODE,EXAM_ID,EXAM_YEAR,EXAM_DOMAIN_NUM,TOTAL_NUM,EXAM_TOTAL_NUM,PASS_NUM,NO_PASS_NUM,TOTAL_SCORE,REFERENCE_DOMAIN_NUM) VALUES("+

@@ -45,8 +45,8 @@ public class UserCreditTest extends TestCase{
         /**
          * 学法库和测试库的链接对象
          */
-        DataBase xfReport = new DataBase(DataSource.SourceType.SOURSE4);
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase xfReport = new DataBase(DataSource.SourceType.XFREPORT);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         List<UserCredit> testUserCredit = GetData.getUserCreditInfo(domainCode,examIds,testReport,"user_credit");
         List<UserCredit> xfUserCredit = GetData.getUserCreditInfo(domainCode,examIds,xfReport,"credit_user_report");
         xfReport.deconnSQL();

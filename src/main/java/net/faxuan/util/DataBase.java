@@ -1,6 +1,7 @@
 package net.faxuan.util;
 
 import org.apache.log4j.Logger;
+import org.testng.Assert;
 
 import java.sql.*;
 import java.util.Map;

@@ -118,7 +118,7 @@ public class ExamUser {
         //判断是否为管理单位
 
         ResultSet resultSet = null;
-        DataBase xfBase = new DataBase(DataSource.SourceType.SOURSE2);
+        DataBase xfBase = new DataBase(DataSource.SourceType.XFBASE);
         if (domainCode.substring(domainCode.length()-3,domainCode.length()).equals(code)) {
             /**
              * 普法管理单位分割单位编码
@@ -214,7 +214,7 @@ public class ExamUser {
          * 组装所有可以参加该考试用户的UserAccount
          * 然后查询用户的成绩
          */
-        DataBase xfExam = new DataBase(DataSource.SourceType.SOURSE3);
+        DataBase xfExam = new DataBase(DataSource.SourceType.XFEXAM);
         String userAccounts = "";
         for (UserExam examAndUser:examAndUsers) {
             userAccounts += ("'" + examAndUser.getUSER_ACCOUNT() + "',");
@@ -293,7 +293,7 @@ public class ExamUser {
         /**
          * 判断考试发布的行业编码，并执行SQL获取所有能看到该考试用户信息
          */
-        DataBase xfBase = new DataBase(DataSource.SourceType.SOURSE2);
+        DataBase xfBase = new DataBase(DataSource.SourceType.XFBASE);
         String industryCode = exam.getINDUSTRY_CODES();
         ResultSet resultSet = null;
         if (industryCode.contains(";")) {
@@ -352,7 +352,7 @@ public class ExamUser {
          * 组装所有可以参加该考试用户的UserAccount
          * 然后查询用户的成绩
          */
-        DataBase xfExam = new DataBase(DataSource.SourceType.SOURSE3);
+        DataBase xfExam = new DataBase(DataSource.SourceType.XFEXAM);
         String userAccounts = "";
         for (UserExam examAndUser:examAndUsers) {
             userAccounts += (examAndUser.getUSER_ACCOUNT() + ",");
@@ -402,7 +402,7 @@ public class ExamUser {
         /**
          * 根据不同年份的考试插入该考试的用户考试信息
          */
-        DataBase testReport = new DataBase(DataSource.SourceType.SOURSE1);
+        DataBase testReport = new DataBase(DataSource.SourceType.TREPORT);
         if (exam.getEXAM_YEAR().equals(yearString)) {
             for (UserExam examAndUser:examAndUsers) {
                 String insertSQL="INSERT INTO user_exam(USER_ACCOUNT,DOMAIN_CODE,RANK_ID,EXAM_ID,EXAM_YEAR,EXAM_SCORE,EXAM_STATUS,EXAM_NAME,EXAM_BEGIN_TIME,USER_NAME) VALUES(";

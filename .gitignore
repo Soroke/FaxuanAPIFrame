@@ -6,3 +6,4 @@ logs
 target
 .idea
 *.iml
+allure-results
